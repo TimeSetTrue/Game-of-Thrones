@@ -7,50 +7,55 @@ import ErrorMessage from '../errorMessage';
 
 export default class RandomChar extends Component {
 
-    constructor() {
-        super();
-        this.updateChar();
-    }
-    
     gotService = new gotService();
     state = {
         char: {},
         loading: true,
+        error: false,
+    }
+
+    componentDidMount() {
+        this.updateChar();
+        this.timerId = setInterval(this.updateChar, 2000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
+
+    componentDidCatch = () => {
+        this.setState({
+            error: true,
+        })
     }
 
     onCharLoaded = (char) => {
         this.setState({
             char,
             loading: false,
-            error: false,
         });
     }
 
-    onError = (err) => {
-        this.setState({
-            error: true,
-            loading: false,
-        })
-    }
-
-    updateChar() {
+    updateChar = () => {
         const id = Math.floor(Math.random() * 140 + 25);
         this.gotService.getCharacter(id)
             .then(char => this.onCharLoaded(char))
-            .catch(this.onError);
+            .catch(this.componentDidCatch);
+        this.foo.bar = 0;
     }
 
     render() {
-        const { char, loading, error } = this.state;
-
-        const errorMessage = error ? <ErrorMessage /> : null;
+        const { char, loading, error} = this.state;
         const spinner = loading ? <Spinner /> : null;
 
-        const content = !(loading || errorMessage) ? <View char={char} /> : null ;
+        const content = !loading ? <View char={char} /> : null ;
+
+        if(error) {
+            return <ErrorMessage />
+        }
 
         return (
             <div className="random-block rounded">
-                {errorMessage}
                 {spinner}
                 {content}
             </div>
