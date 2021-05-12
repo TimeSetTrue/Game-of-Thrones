@@ -41,7 +41,6 @@ export default class RandomChar extends Component {
         this.gotService.getCharacter(id)
             .then(char => this.onCharLoaded(char))
             .catch(this.componentDidCatch);
-        this.foo.bar = 0;
     }
 
     render() {
