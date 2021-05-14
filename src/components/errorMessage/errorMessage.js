@@ -1,7 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
+import './error.css';
 
 const ErrorMessage = () => {
-	return <span>ОШИБКААААА!!!!!!!!!!!!</span>
+	return (
+		<span className="error">Ошибка ;(<br/></span>
+	)
 }
 
 export default ErrorMessage;
