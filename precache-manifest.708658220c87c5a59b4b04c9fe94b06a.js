@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/Game-of-Thrones/static/js/runtime~main.79d527da.js"
   },
   {
-    "revision": "07235f3d15a415eee5d30652d2076ea6",
+    "revision": "984fb2973d3dc6bcfa86e39718a41dc0",
     "url": "/Game-of-Thrones/index.html"
   }
 ];
