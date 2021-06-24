@@ -1,4 +1,4 @@
-https://timesettrue.github.io/Game-of-Thrones/
+Go on the website: https://timesettrue.github.io/Game-of-Thrones/
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
