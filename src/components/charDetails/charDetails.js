@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './charDetails.css';
 import gotService from '../../services/gotService';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
+import './charDetails.css';
 
 const Field = ({char, field, label}) => {
     return (
@@ -74,9 +74,11 @@ export default class CharDetails extends Component {
             return <ErrorMessage />
         }
 
-        const {name} = char;
+        if(!char) {
+            return <Spinner />
+        }
 
-        // const content = !(loading || error) ? <ContentChar char={char} /> : <Spinner /> ;
+        const {name} = char;
 
         return (
             <div className="char-details rounded">

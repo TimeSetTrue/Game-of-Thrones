@@ -8,7 +8,7 @@ import RowBlock from '../rowBlock';
 export default class HousesPage extends Component {
 	gotService = new gotService();
 	state = {
-        selectedChar: 1,
+        selectedChar: null,
 		error: false,
     }
 
